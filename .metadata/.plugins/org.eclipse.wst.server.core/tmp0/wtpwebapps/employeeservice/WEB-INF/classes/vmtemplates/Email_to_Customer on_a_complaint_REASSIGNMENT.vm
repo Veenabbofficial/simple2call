@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div style="width: 100%;margin: 20px auto;">
+        <span style="font-size: 20px;">Dear <strong>${email.customerName}</strong>,</span>
+        <br>
+        <br>
+        <p style="font-size: 18px;text-align: justify;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your complaint bearing <span style="font-size: 20px;color: blue;">${email.complaintId}|${email.flatNumber}</span> has been reassigned successfully!</p>
+		<p style="font-size: 18px;text-align: justify;">The complaint is forwarded to the concerned <span style="font-size: 20px;color: blue;">${email.departmentName}</span> Department for necessary action.You will receive a response from them shortly. </p>
+       <!-- <p style="font-size: 18px;text-align: justify;">In the mean time, please click on the below link to know the status of the complaint.</p>
+        <p><a href="www.facebook.com" target="_blank">URL</a></p>
+        <p><b style="font-size: 18px;">Complaint message :</b><b style="font-size: 16px;">${email.message}</b></p> -->
+        <p style="font-size: 18px;"><b style="font-size: 18px;">Complaint Owner: </b> <b style="font-size: 16px;">${email.complaintOwner}</b><span style="font-size: 16px;"> will be assisting you with this particular complaint.</span>
+        </p>
+        <p style="font-size: 18px;"><b>*DO NOT REPLY TO THIS E-MAIL*</b></p>
+        <p style="font-size: 18px;"><b>This is an auto generated E-mail,please do not reply to this message.</b></p>
+    </div>
+     <img src="https://sumadhuragroup.app/images/sumadhura_projects_images/sumadhurafooterGif.gif" alt="Welcome to Sumadhura" width="400px" style="border:0px;display:block;outline:none;border-radius:5px" class="CToWUd" data-bit="iit">
+</body>
+
+</html>

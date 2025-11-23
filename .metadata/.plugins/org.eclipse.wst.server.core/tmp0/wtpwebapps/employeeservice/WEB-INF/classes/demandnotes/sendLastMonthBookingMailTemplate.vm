@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       	<style>
+		table.Data {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+   text-align: center;
+}
+
+td.Data, th.Data {
+  border: 3px solid black;
+   text-align: center;
+  padding: 5px;
+}
+	  	</style> 
+</head>
+
+<body>
+    <div style="width: 100%;margin: 20px auto;">
+        <p style="font-size: 16px; text-align: left;">Dear Sir/Madam,<strong></strong></p>
+        <p style="font-size: 16px;text-align: justify;">Please find below the details of the flats booked in the last month: </p>
+		<br>
+		
+		<table border="1" class="Data">
+        <thead>
+            <tr>
+                 <th>S.No</th>
+                <th>Site Name</th>
+                <th>Flat No</th>
+                <th>Customer Name</th>
+                 <th>Booking Date</th>
+                <th>Agreement Date</th>
+                 <th>Car Parking Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+         #set($serialNo = 1)
+            #foreach ($booking in $email.bookings)
+           <tr>
+    <td>#if($serialNo && !$serialNo.isEmpty()) $serialNo #else - #end</td>
+    <td>#if($booking.siteName && !$booking.siteName.isEmpty()) $booking.siteName #else - #end</td>
+    <td>#if($booking.flatNo && !$booking.flatNo.isEmpty()) $booking.flatNo #else - #end</td>
+    <td>#if($booking.customerName && !$booking.customerName.isEmpty()) $booking.customerName #else - #end</td>
+    <td>#if($booking.strBookingDate && !$booking.strBookingDate.isEmpty()) $booking.strBookingDate #else - #end</td>
+    <td>#if($booking.strAgreementDate && !$booking.strAgreementDate.isEmpty()) $booking.strAgreementDate #else - #end</td>
+      <td>#if($booking.carParkingTotalAmount && !$booking.carParkingTotalAmount.isEmpty()) $booking.carParkingTotalAmount #else - #end</td>
+   </tr>
+             #set($serialNo = $serialNo + 1)
+            #end
+        </tbody>
+    </table>
+    
+    	<br>
+         <p style="font-size: 16px;text-align: justify;">Thanks & Regards</p>
+		<br>
+		<p style="font-size: 13px;text-align: justify;"><b>Note : This is system generated mail. Please do not reply</b></p>   
+    </div>
+</body>
+
+</html>

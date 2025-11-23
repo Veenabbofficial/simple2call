@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Company Notification Reply</title> 
+  <style>
+     td{   
+       padding: 10px;
+      } 
+     table{
+     border: 2px solid #666; 
+     }
+  </style> 
+</head>
+  <body>
+  
+  
+       <p style="font-size: 15px;color: black;"><b>Dear</b><strong style="font-size:15px;"> ${email.employeeName}</strong>,</p>
+          <br>
+
+         <p style="font-size:15px;color: black;">Customer has replied to the company notification with the following details:</p>
+         <br>
+        
+       <p style="font-size:15px;color: black;"> Project Name        : ${email.siteName}</p> 
+      <p style="font-size:15px;color: black;">  Flat Number         : ${email.flatNo}</p> 
+       <p style="font-size:15px;color: black;"> Notification ID     : ${email.id}</p> 
+        <p style="font-size:15px;color: black;">Notification Title  : ${email.message}.</p> 
+      
+ 
+ </html>

@@ -1,0 +1,86 @@
+
+1)agent fetch api:
+------------------
+
+
+https://customerappcug.app/SumadhuraCallingService/simple2call/login/processInboundCall.spring?Customer_Phone=8801117909&Crm_Type=CRM_FINANCE&Calling_To=919403895566&Authkey=SUMCALL5949
+
+
+
+2) Redirection URL
+
+https://customerappcug.app/simple2call_cug/#/updateremarks?CallID=192000173763&Agent=test_pavan&Customer_Phone=919392577430&ACD=testing_pavan&Call_Direction=Inbound&Call_To_Number=919403895361
+ 
+3) Update call duration and image path (Working)  
+ 
+https://customerappcug.app/SumadhuraCallingService/simple2call/login/saveInOrOutboundCallCompletionDetails.spring
+ 
+Request paramas :
+ 
+[
+    {
+        "callId": "161000547034",
+        "agentId": null,
+        "customerPhone": "8943727373",
+        "callDuration": "0",
+        "callDirection": "Incoming",
+        "statusOfCall": "Dropped",
+        "authKey": "SUMCALL5949",
+        "dateandtime": 1725257932000
+    }
+]
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------- 
+Inbound calls :
+--------------
+ 
+1) Get agent details : (Working)  
+ 
+https://customerappcug.app/SumadhuraCallingService/simple2call/login/processInboundCall.spring?Customer_Phone=8879018179&Crm_Type=CRM_FINANCE&Calling_To=919403895362&Authkey=SUMCALL5949
+ 
+Crm_Type=CRM_FINANCE   or
+Crm_Type=CRM_TECH
+ 
+Calling_To=919403895362  (Hyderabad) or
+Calling_To=919403895361  (Banglore)     
+ 
+2) Redirection URL
+ 
+https://customerappcug.app/simple2call_cug/#/updateremarks?callId=161000328348&agentId=test_pavan&customerPhone=9392577430&acd=test_pavan&callDirection=Inbound
+ 
+
+3) Update call duration and image path (Working)  
+ 
+https://customerappcug.app/SumadhuraCallingService/simple2call/login/saveInOrOutboundCallCompletionDetails.spring
+ 
+Request paramas :
+ 
+[
+    {
+       "callId" : "1259",
+       "agentId" : "sachin_agent",
+       "customerPhone" : "8106436035",
+       "callDuration" : "30 Sec",
+       "callDirection" : "Outbound",
+       "statusOfCall" : "Completed",
+	   "authKey" : "SUMCALL5949",
+	   "dateandtime" : ""
+    },
+    {
+       "callId" : "1260",
+       "agentId" : "sachin_agent",
+       "customerPhone" : "8106436035",
+       "callDuration" : "0 Sec",
+       "callDirection" : "Outbound",
+       "statusOfCall" : "Completed",
+	   "authKey" : "SUMCALL5949",
+	   "dateandtime" : ""
+    }
+]
+
+
+

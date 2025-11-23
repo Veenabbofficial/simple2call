@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+	 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  	<title>Notification Approval Mail</title> 
+	   	<style>
+		table.Data {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td.Data, th.Data {
+  border: 3px solid black;
+  text-align: left;
+  padding: 5px;
+}
+	  	</style> 
+	</head>
+	<body>
+		##<span style="font-size: 15px;"> Dear<strong style="font-size:15px;"> ${email.employeeName}</strong>,</span>
+		<span style="font-size: 15px;"> Dear ${email.employeeName},</span>
+	  	<br><br>
+	  	<span style="font-size:15px;color:black">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; You got a Notification for approval, with ID <b>${email.id}</b> and titled as <b>${email.title}</b>. Kindly take the necessary action accordingly.</span>
+	 	<br><br>
+	 	<span style="font-size:15px;color:black">Request from : <strong>${email.name}</strong>.</span>
+	    <br><br><br>
+		 <table class="Data">
+ <tr>
+  <th class="Data">Notification title</th>
+    <th class="Data">Notification text</th>
+    <th class="Data">Notification body</th>
+  <th class="Data">No. of attachments</th>
+ </tr>
+ <tr>
+ <td class="Data">${email.title} </td>
+ <td class="Data">${email.emailBodyText} </td>
+ <td class="Data">${email.message} </td>
+ <td class="Data">${email.filescount} </td>
+ </tr>
+</table>
+ <br><br>
+	    <table  width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;border-collapse:collapse;">
+     <tr>
+       <td align="center">
+       <a href='https://106.51.38.64:7777/sumadhura_CUG/#/company_notification_mail_info?notificationId=${email.id}&Authentication_id=1&empId=${email.employeeId}&mailPassword=${email.mailOtpApproval}&action=APPROVED&employeeId=${email.employeeId}&id=${email.id}'><button style="font: bold 17px Arial; background-color:DodgerBlue;" type="button">Approve</button></a>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href='https://106.51.38.64:7777/sumadhura_CUG/#/company_notification_mail_info?notificationId=${email.id}&Authentication_id=1&empId=${email.employeeId}&mailPassword=${email.mailOtpApproval}&action=Modify&employeeId=${email.employeeId}&id=${email.id}'><button style="font: bold 17px Arial; background-color:DodgerBlue;" type="button">Modify</button></a>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href='https://106.51.38.64:7777/sumadhura_CUG/#/company_notification_mail_info?notificationId=${email.id}&Authentication_id=1&empId=${email.employeeId}&mailPassword=${email.mailOtpApproval}&action=REJECTED&employeeId=${email.employeeId}&id=${email.id}'><button style="font: bold 17px Arial; background-color:DodgerBlue;" type="button">Reject</button></a><br><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href='https://106.51.38.64:7777/sumadhura_CUG/#/company_notification_mail_info?notificationId=${email.id}&Authentication_id=1&empId=${email.employeeId}&mailPassword=${email.mailOtpApproval}&action=View&employeeId=${email.employeeId}&id=${email.id}'><button style="font: bold 17px Arial; background-color:DodgerBlue;" type="button">ViewDetails</button></a>
+         <br>
+       </td>
+     </tr>
+  </table>
+  <br>
+	    <span style="font-size:15px;"><strong>Note :</strong> This is an auto generated E-mail, please do not reply to this mail.</span> 
+	
+	</body> 
+ </html>

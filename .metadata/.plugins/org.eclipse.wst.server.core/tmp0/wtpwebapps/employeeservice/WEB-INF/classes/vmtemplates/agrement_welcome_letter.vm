@@ -1,0 +1,169 @@
+<head>
+    <style>
+      .keyname1 {
+      display: inline-table;
+      line-height: 21px;
+      width: 200px;
+      font-size: 18px;
+      }
+      .keyname {
+      display: inline-table;
+      line-height: 21px;
+      width: 200px;
+      font-size: 16px;
+      }
+      table {
+      border: 1px solid black;
+      border-collapse: collapse;
+      width:100%;
+      padding:10px;
+      }
+      table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding:5px;
+      text-align:left;
+      }
+      [contenteditable="true"]:hover {
+      outline: lightblue auto 5px;
+      outline: -webkit-focus-ring-color auto 5px;
+      }
+      body {
+      background: #f1f1f1;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      .invoice {
+      font-family: inherit;
+      font-weight: 100;
+      width: 95%;
+      max-width: 1000px;
+      margin: 2% auto;
+      box-sizing: border-box;
+      padding: 70px;
+      border-radius: 5px;
+      background: #fff;
+      min-height: auto;
+      font-size: 17px;
+      }
+      .header {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      }
+      .header--invoice {
+      order: 2;
+      text-align: right;
+      width: 40%;
+      margin: 0;
+      padding: 0;
+      }
+      .invoice--date,
+      .invoice--number {
+      font-size: 12px;
+      color: #494949;
+      }
+      .invoice--recipient {
+      margin-top: 25px;
+      margin-bottom: 4px;
+      }
+      .header--logo {
+      order: 1;
+      width: 80%;
+      }
+      .logo--address {
+      font-size: 14px;
+      padding: 4px;
+      }
+      .logo--address1 {
+      font-size: 16px;
+      font-family: lato;
+      text-transform: capitalize;
+      }
+      .description {
+      margin: auto;
+      text-align: justify;
+      }
+      .items--table {
+      width: 100%;
+      padding: 10px;
+      thead {
+      background: #ddd;
+      color: #111;
+      text-align: center;
+      font-weight: 800;
+      }
+      tbody {
+      text-align: center;
+      }
+      .total-price {
+      border: 2px solid #444;
+      padding-top: 4px;
+      font-weight: 800;
+      background: lighten(green, 50%);
+      }
+      }
+      .sessiontitle {
+      text-align: center;
+      font-family: initial;
+      text-decoration:underline;
+      padding: 1px;
+      width: 100%;
+      text-transform: capitalize;
+      font-size: 15px;
+      }
+      .spansubtitle {
+      font-size: 18px;
+      font-weight:bold;
+      }
+      .bottomcls {
+      position: relative;
+      top: -18px;
+      font-size: 11px;
+      font-family: serif;
+      color: #795548;
+      }
+   </style>
+</head>
+ #set ($info = ${email.demandNoteGeneratorInfo})
+ #set ($customerDetails = $email.dataForPdf.get("customerDetails").get(0))
+ #set ($customerUnitDetails = $email.dataForPdf.get("customerUnitDetails").get(0))
+<body  class="welcomeMail">
+<article class="invoice welcomeMail">
+   ## <div  contenteditable="true">
+      ## <span >Sub :</span>Welcome to Aspire Aurum - B704 <br/> commented details
+   ## </div>
+   <section style="margin: auto;text-align: justify;">
+      <p contenteditable="true">Dear Mr/Ms .${email.name},</p>
+      <div></div>
+      <p contenteditable="true"> Greetings from Sumadhura!!</p>
+      <div></div>
+      <p contenteditable="true">We take this opportunity and are delighted to welcome you to Sumadhura [${email.siteName}], where luxury living meets exceptional service.</p>
+      <div></div>
+      <p>We, Technical-CRM would be your Point of Contact post sales for all Technical related queries,  Specifications, Construction updates, Car parking allotments, Flat Handing over etc.</p>
+      <p>Please feel free to contact us,  Mob: ${email.contactNumber}..</p>
+      <div></div>
+      <p contenteditable="true">We earnestly request you to reach us through the Sumadhura App for any technical assistance.Kindly raise tickets in the Sumadhura app for immediate response. </p>
+      <div></div>
+      <p contenteditable="true">We are committed to deliver responsive and Quality service to all our customers. Customer satisfaction is the most important part of our business  and we work hard to Foundation of happiness to our esteemed customers.</p>
+      <div></div>
+      ##<p contenteditable="true">Thank you for choosing Sumadhura [${email.siteName}]  and becoming a part of the Sumadhura family. We trust that your experience with us will bring you the utmost satisfaction.</p>
+      <div></div>
+      #if(${email.siteid} == 150)
+      
+       #else 
+      <p contenteditable="true">We can be reached during working hours at the Project Site from Sunday to Saturday: 10:00 am to 6:00pm.</p>
+ #end
+
+   </section> <header class="header"> <nav class="header--logo">
+         <div class="logo--address1" contenteditable="true" >
+          
+             Regards<br/> 
+		    <h6 style='margin:0;'><font size="1">Sumadhura </font></h6><h3><b>[${email.siteName}]</b><h3/>
+		    <p  style='margin:0;'><font size="1">CRM Technical Team</font></p>
+		   
+		    
+         </div>
+      </nav> </header> </article> <body>
