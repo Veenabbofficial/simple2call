@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       	<style>
+		table.Data {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+   text-align: center;
+}
+
+td.Data, th.Data {
+  border: 3px solid black;
+   text-align: center;
+  padding: 5px;
+}
+	  	</style> 
+</head>
+
+<body>
+    <div style="width: 100%;margin: 20px auto;">
+        <p style="font-size: 16px; text-align: left;">Dear Sir/Madam,<strong></strong></p>
+		<br>
+        <p style="font-size: 16px;text-align: justify;">Below are the customers for whom the payments are due today. Find below for more information </p>
+		<br>
+		
+		<table border="1" class="Data">
+        <thead>
+            <tr>
+                 <th>S.No</th>
+                <th>Site Name</th>
+                <th>Flat No</th>
+                <th>Customer Name</th>
+                 <th>Milestone Name</th>
+                <th>Milestone Date</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+         #set($serialNo = 1)
+            #foreach ($milestone in $email.milestonesScheduleDetails)
+           <tr>
+    <td>#if($serialNo && !$serialNo.isEmpty()) $serialNo #else - #end</td>
+    <td>#if($milestone.siteName && !$milestone.siteName.isEmpty()) $milestone.siteName #else - #end</td>
+    <td>#if($milestone.flatNo && !$milestone.flatNo.isEmpty()) $milestone.flatNo #else - #end</td>
+    <td>#if($milestone.customerName && !$milestone.customerName.isEmpty()) $milestone.customerName #else - #end</td>
+    <td>#if($milestone.milestoneName && !$milestone.milestoneName.isEmpty()) $milestone.milestoneName #else - #end</td>
+    <td>#if($milestone.stingMilestoneDate && !$milestone.stingMilestoneDate.isEmpty()) $milestone.stingMilestoneDate #else - #end</td>
+    <td>#if($milestone.percentage && !$milestone.percentage.isEmpty()) $milestone.percentage #else - #end</td>
+   </tr>
+             #set($serialNo = $serialNo + 1)
+            #end
+        </tbody>
+    </table>
+    
+    	<br>
+         <p style="font-size: 16px;text-align: justify;">Thanks & Regards</p>
+		<br>
+		<p style="font-size: 13px;text-align: justify;"><b>Note : This is system generated mail. Please do not reply</b></p>   
+    </div>
+</body>
+
+</html>

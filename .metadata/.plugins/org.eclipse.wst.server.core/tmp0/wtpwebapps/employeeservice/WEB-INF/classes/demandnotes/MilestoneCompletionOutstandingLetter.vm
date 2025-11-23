@@ -1,0 +1,275 @@
+<head>
+    <style>
+	table {
+  border: 1px solid black;
+ border-collapse: collapse;
+ width:100%;
+
+ padding:10px;
+
+
+}
+
+table, th, td {
+  border: 1px solid black;
+ border-collapse: collapse;
+ padding:5px;
+ text-align:center;
+}
+        [contenteditable="true"]:hover {
+            outline: lightblue auto 5px;
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+
+        body {
+            background: #f1f1f1;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice {
+            font-family: inherit;
+            font-weight: 100;
+            width: 95%;
+            max-width: 1000px;
+            margin: 2% auto;
+            box-sizing: border-box;
+            padding: 70px;
+            border-radius: 5px;
+            background: #fff;
+            min-height: auto;
+            font-size: 13;
+        }
+
+        .header {
+            display: flex;
+            width: 100%;
+           
+            align-items: center;
+        }
+
+        .header--invoice {
+            order: 2;
+            text-align: right;
+            width: 40%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice--date,
+        .invoice--number {
+            font-size: 13px;
+            color: #494949;
+        }
+
+        .invoice--recipient {
+            margin-top: 25px;
+            margin-bottom: 4px;
+        }
+
+        .header--logo {
+            order: 1;
+            font-size: 30px;
+            width: 60%;
+            font-weight: 900;
+        }
+
+        .logo--address {
+            font-size: 13px;
+            padding: 4px;
+			margin-bottom: -98px;
+			width:50%;
+        }
+
+
+        .logo--address1 {
+            font-size: 13px;
+            font-family: lato;
+            text-transform: capitalize;
+        }
+
+        .description {
+            margin: auto;
+            text-align: justify;
+
+        }
+
+        .items--table {
+            width: 100%;
+            padding: 10px;
+
+            thead {
+                background: #ddd;
+                color: #111;
+                text-align: center;
+                font-weight: 800;
+            }
+
+            tbody {
+                text-align: center;
+            }
+
+            .total-price {
+                border: 2px solid #444;
+                padding-top: 4px;
+                font-weight: 800;
+                background: lighten(green, 50%);
+            }
+        }
+
+        .sessiontitle {
+            text-align: center;
+            font-family: initial;
+            padding: 1px;
+            width: 100%;
+            margin-top: 10px;
+            text-transform: capitalize;
+            font-size: 13px;
+			
+
+        }
+
+        .spansubtitle {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .bottomcls {
+            position: relative;
+            top: -18px;
+            font-size: 11px;
+            font-family: serif;
+            color: #795548;
+        }
+    </style>
+</head>
+
+
+<article class="invoice">
+	#foreach($demandNoteGeneratorInfo in $email.demandNoteGeneratorInfoList)
+	
+    <header class="header" style=" style="margin-bottom: -85px;"">
+ #*   
+    <div style="width:100%; float:left">
+	    <div style="width:85%;float:left">
+	    </div>
+	    <div style="width:15%;float:left;margin-left:85%">
+	    	<p style='text-align:right;'><img src='${demandNoteGeneratorInfo.rightSidelogoForPdf}'  width='120' height='120' /></p>
+	    </div>
+    </div>
+*#    
+    <nav class="header--logo">
+		<div class="logo--address" contenteditable="true" style="20px;">
+			<span>Date:-${demandNoteGeneratorInfo.demandNoteGeneratedDate}</span><br/><br/>
+			<span>To,</span><br/>
+			<b>${demandNoteGeneratorInfo.customerNames}</b><br/>
+			
+			#if($demandNoteGeneratorInfo.noOfCustomersIncludedInBooking ==1)
+     			Residing at : 
+     		#elseif($demandNoteGeneratorInfo.noOfCustomersIncludedInBooking ==2)
+     			Both are Residing at : 
+     		#else
+     			All are Residing at :   
+     		#end
+     		${demandNoteGeneratorInfo.address}
+			<br/>
+			Mobile: ${demandNoteGeneratorInfo.mobileNumbers} <br/>
+								
+			<div>
+			</div>
+		</div>				
+	</nav>  
+    </header>
+
+    <div class="sessiontitle" style="text-align: center;font-family: initial;
+    padding: 1px;width: 100%;margin-top: 10px;text-transform: capitalize;font-size: 13px;">
+        <h2><u>Outstanding Due's Letter</u></h2>
+    </div>
+
+    <section class="description">
+        <p contenteditable="true">Dear Sir/Madam,</p>
+        <p contenteditable="true">
+        
+        #if($demandNoteGeneratorInfo.siteId == 134 || $demandNoteGeneratorInfo.thanksAndRegardsFrom == "Thank You From EG")
+        	Greetings!
+        #else 
+        	Greetings from ${demandNoteGeneratorInfo.greetingsFrom}!
+        #end
+        
+        </p>
+        
+        <p contenteditable="true" style="text-align: justify;">
+            Referring to your booking <span class="spansubtitle"><b>$email.property No. ${demandNoteGeneratorInfo.flatName}</b></span> in project <span class="spansubtitle"><b>&ldquo;${demandNoteGeneratorInfo.siteName}&rdquo;.</b></span>
+        </p>
+        
+        <p contenteditable="true" style="text-align: justify;">
+            We would like to bring to your attention that there is an outstanding payment on your account, which has not yet been settled
+            . According to our records, the total overdue amount is Rs. ${demandNoteGeneratorInfo.previousMilestoneDueAmount}/-, along with new dues Rs. ${demandNoteGeneratorInfo.currentMilestoneDueAmount}/-.
+        </p>
+        
+        <p contenteditable="true" style="text-align: justify;">
+            We kindly request you to settle the outstanding amount of Rs. ${demandNoteGeneratorInfo.mileStoneAmount}/- immediately.
+        </p>
+        
+        <p contenteditable="true" style="text-align: justify;">
+            For your reference, the details of the payments are as follows:
+        </p>
+        <ul>
+		    <li>Overdue Amount: Rs. ${demandNoteGeneratorInfo.previousMilestoneDueAmount}/-</li>
+  			<li>New Dues: Rs. ${demandNoteGeneratorInfo.currentMilestoneDueAmount}/-</li>
+  			<li>Total Due: Rs. ${demandNoteGeneratorInfo.mileStoneAmount}/-</li>
+		</ul>
+
+		
+        <p contenteditable="true" style="text-align: justify;">
+          #* The total amount to be paid is <b>Rs. <u>${demandNoteGeneratorInfo.totalDueAmount}</u>/-</b>, in favour of <span class="spansubtitle"><b>${demandNoteGeneratorInfo.accountHolderName}</b></span>, ${demandNoteGeneratorInfo.siteAccount}.*#
+           
+           You may process the payment in favour of <span class="spansubtitle"><b>${demandNoteGeneratorInfo.accountHolderName}</b></span>, ${demandNoteGeneratorInfo.siteAccount}.
+        </p>
+         
+        # Below is the detailed breakdown REMOVED
+
+        # TABLE REMOVED
+
+        <p contenteditable="true">Kindly refer to your previous demand notes for the milestones details for the above-mentioned dues. Please note delayed payments attract interest and would also result in consequential delay in project progress. </p>
+    </section>
+
+    <header class="header">
+
+        <nav class="header--logo">
+
+            <div class="logo--address1" contenteditable="true" style="line-height: 24px;">
+                
+                
+                <p contenteditable="true" style="color:#000000;">
+                *Note: Please clear the TDS overdue amount directly to the Income tax department.</p>
+  				<p contenteditable="true" style="color:#000000;"><span class="spansubtitle">
+  				<b>This is a system generated document, signature is not required.</b></span></p>
+            </div>
+        </nav>
+    </header>
+
+#*
+
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <div><hr/></div>
+<footer class ="foooter">
+    <h6 style="margin:0;">${demandNoteGeneratorInfo.companyName}</h6>
+    <p class="bottomcls" style="margin:2;">${demandNoteGeneratorInfo.companyBillingAddress}
+     #if($demandNoteGeneratorInfo.companyCin != "-")
+     	Tel: ${demandNoteGeneratorInfo.companyTelephoneNo} CIN: ${demandNoteGeneratorInfo.companyCin} GSTIN: ${demandNoteGeneratorInfo.companyGstin}, URL: ${demandNoteGeneratorInfo.companyWebsite}
+     #elseif($demandNoteGeneratorInfo.companyLlpin != "-")	
+     	Tel: ${demandNoteGeneratorInfo.companyTelephoneNo} LLPIN: ${demandNoteGeneratorInfo.companyLlpin} GSTIN: ${demandNoteGeneratorInfo.companyGstin}, URL: ${demandNoteGeneratorInfo.companyWebsite} 
+     #else
+     #end
+     </p>
+</footer>
+
+*#
+	#end
+	
+	
+	
+</article>

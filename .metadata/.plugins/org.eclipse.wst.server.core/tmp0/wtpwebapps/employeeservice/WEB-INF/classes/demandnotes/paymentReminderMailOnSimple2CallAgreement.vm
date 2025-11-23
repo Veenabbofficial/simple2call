@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       	<style>
+		table.Data {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+   text-align: center;
+}
+
+td.Data, th.Data {
+  border: 3px solid black;
+   text-align: center;
+  padding: 5px;
+}
+	  	</style> 
+</head>
+
+<body>
+    <div style="width: 100%;margin: 20px auto;">
+        <p style="font-size: 16px; text-align: left;">Dear Sir/Madam,<strong></strong></p>
+		<br>
+        <p style="font-size: 16px;text-align: justify;">You have the below payment reminders today.</p>
+		<br>
+		
+		<table border="1" class="Data">
+        <thead>
+            <tr>
+                 <th>S.No</th>
+                <th>Site Name</th>
+                <th>Flat No</th>
+                <th>Customer Name</th>
+                 <th>Reminder Type</th>
+                <th>Agreed To Pay On</th>
+                <th>Agreed To Pay Amount</th>
+                 <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+         #set($serialNo = 1)
+            #foreach ($paymentReminder in $email.paymentScheduleDetails)
+           <tr>
+    <td>#if($serialNo && !$serialNo.isEmpty()) $serialNo #else - #end</td>
+    <td>#if($paymentReminder.siteName && !$paymentReminder.siteName.isEmpty()) $paymentReminder.siteName #else - #end</td>
+    <td>#if($paymentReminder.flatNo && !$paymentReminder.flatNo.isEmpty()) $paymentReminder.flatNo #else - #end</td>
+    <td>#if($paymentReminder.customerName && !$paymentReminder.customerName.isEmpty()) $paymentReminder.customerName #else - #end</td>
+    <td>#if($paymentReminder.callOrReminderTypeName && !$paymentReminder.callOrReminderTypeName.isEmpty()) $paymentReminder.callOrReminderTypeName #else - #end</td>
+    <td>#if($paymentReminder.strAgreedToPayOn && !$paymentReminder.strAgreedToPayOn.isEmpty()) $paymentReminder.strAgreedToPayOn #else - #end</td>
+    <td>
+        #if($paymentReminder.strAggreedToPayAmount && !$paymentReminder.strAggreedToPayAmount.isEmpty())
+            $paymentReminder.strAggreedToPayAmount
+        #else
+            -
+        #end
+    </td>
+    <td>#if($paymentReminder.remarks && !$paymentReminder.remarks.isEmpty()) $paymentReminder.remarks #else - #end</td>
+</tr>
+             #set($serialNo = $serialNo + 1)
+            #end
+        </tbody>
+    </table>
+    
+    	<br>
+         <p style="font-size: 16px;text-align: justify;">Thanks & Regards</p>
+		<br>
+		<p style="font-size: 13px;text-align: justify;"><b>Note : This is system generated mail. Please do not reply</b></p>   
+    </div>
+</body>
+
+</html>

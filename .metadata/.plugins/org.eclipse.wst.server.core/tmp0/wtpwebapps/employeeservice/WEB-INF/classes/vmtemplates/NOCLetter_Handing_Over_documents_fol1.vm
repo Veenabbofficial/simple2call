@@ -1,0 +1,295 @@
+<head>
+    <style>
+	table {
+  border: 1px solid black;
+ border-collapse: collapse;
+ width:100%;
+
+ padding:10px;
+
+
+}
+
+table, th, td {
+  border: 1px solid black;
+ border-collapse: collapse;
+ padding:5px;
+ text-align:center;
+}
+        [contenteditable="true"]:hover {
+            outline: lightblue auto 5px;
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+
+        body {
+            background: #f1f1f1;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice {
+          font-family: inherit;
+            font-weight: -50;
+            width: -100%;
+            max-width: -50px;
+            margin: 1% auto;
+            box-sizing: border-box;
+            padding:-20px;
+            border-radius:1px;
+            background: #fff;
+         ## font-size: 5px!important;
+            min-height: auto;
+        }
+
+        .header {
+            display: flex;
+            width: 100%;
+
+            align-items: center;
+        }
+
+        .header--invoice {
+            order: 2;
+            text-align: right;
+            width: 40%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice--date,
+        .invoice--number {
+            font-size: 14px;
+            color: #494949;
+        }
+
+        .invoice--recipient {
+            margin-top: 25px;
+            margin-bottom: 4px;
+        }
+
+        .header--logo {
+            order: 1;
+            font-size: 30px;
+            width: 80%;
+            font-weight: 900;
+        }
+
+        .logo--address {
+            font-size: 14px;
+            padding: 4px;
+         
+        }
+
+
+        .logo--address1 {
+           
+            font-size: 14px;
+            font-family: lato;
+            text-transform: capitalize;
+        }
+
+        .description {
+            margin: auto;
+            text-align: justify;
+
+        }
+
+        .items--table {
+            width: 100%;
+            padding: 10px;
+
+            thead {
+                background: #ddd;
+                color: #111;
+                text-align: center;
+                font-weight: 800;
+            }
+
+            tbody {
+                text-align: center;
+            }
+
+            .total-price {
+                border: 2px solid #444;
+                padding-top: 4px;
+                font-weight: 800;
+                background: lighten(green, 50%);
+            }
+        }
+
+        .sessiontitle {
+text-align: justify;
+            font-family: initial;
+            padding: 1px;
+            width: 100%;
+            text-transform: capitalize;
+            font-size: 14px;
+			text-decoration:underline;
+			
+
+        }
+
+        .spansubtitle {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .bottomcls {
+            position: relative;
+            top: -18px;
+            font-size: 14px;
+            font-family: serif;
+            color: #795548;
+        }
+        
+    </style>
+</head>
+
+#set ($customerDetails = $email.dataForPdf.get("customerDetails").get(0))
+ #set ($customerUnitDetails = $email.dataForPdf.get("customerUnitDetails").get(0))
+ #set ($info = ${email.demandNoteGeneratorInfo})
+ 
+ 
+ 
+<article class="invoice" style="font-family: Times New Roman, Times, sans-serif;">
+##style="line-height:20px;margin-top:-40px;"
+
+
+    <section class="sessiontitle">
+    
+      <h3 style="text-align: center;margin-left:20px;">
+      <u>APARTMENT UNIT /FLAT POSSESSION HANDING OVER</u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     	#if($info.condition == "Land Owner")
+     	  <img src="https://sumadhuragroup.app/images/sumadhura_projects_images/Folium_logo.png" width="150" height="80"/> 
+     	#else
+      <img src="https://sumadhuragroup.app/images/sumadhura_projects_images/New_Sumadhura_Logo-min.png" width="150" height="30"/> 
+      #end
+   
+      </h3>
+ <div style="margin-top:-20px;">
+  <p><span class="spansubtitle"><b>From,</b></span></p>
+       
+        <p><span class="spansubtitle">
+          	#if($info.condition == "Land Owner")
+			 <p style="margin-top:5px">$info.companySalutation $info.companyName,aged about 71 years,</p><br/>
+			#elseif($info.condition == "Aspire Series")
+				a proprietorship firm/ partnership firm/ company incorporated under the provisions of the Companies Act 1956,
+			#else
+			 <p style="margin-top:5px">$info.companySalutation $info.companyName.,</p><br/>
+				A company incorporated under the provisions of Indian Companies Act 1956,
+			#end
+			
+			#if($info.condition == "Land Owner")
+				##land owner is a person, so residing at
+				 S/o Late.S.M. Hassan, R/at No.36, Sunny Brooks, Doddakannelli Village, Varthur Hobli, Bnagalore East Taluk.
+				 <br/><b>Represented By His GPA Holder Mr K.Rahul</b>
+				</span>
+			#else
+				## ex. sumadhura is compnay so, *registered office at
+        		having its registered office at: $info.companyBillingAddress
+        		       </span> <p><span class="spansubtitle">
+         Represented by it's Authorised Signatory,</span> </p>
+       <br/> <p ><span class="spansubtitle"><b>Mr.K Rahul</b></span></p>
+       
+        		
+        	#end
+
+        </p>
+        </div>
+    </section>
+    <section class="description" style="text-align: justify;">
+       
+
+        <p style="margin-top:5px"><span class="spansubtitle"><b>To,</b></span></p>
+        <p style="margin-top:5px"><span class="spansubtitle"><b>${customerDetails.get("customerNameWithCoApplicants")}</b></span></p>
+		<p style="margin-top:5px"><span class="spansubtitle"><b>${customerDetails.get("residenceType")} :</b> ${customerDetails.get("customerAddress")}.</span></p>
+      
+	   <p style="margin-top:5px"><b>SUB</b><span class="spansubtitle"> :- Handing over Possession of Apartment unit/ Flat bearing No.  <span class="spansubtitle"><b>${customerDetails.get("flatName")},</b>
+	   </span> in <span class="spansubtitle"><b>${customerDetails.get("floorName")}</b></span> 
+	   of the <span class="spansubtitle"><b>${customerDetails.get("blockName")},Phase 1</b></span> having super built up area of 
+	   <span class="spansubtitle"><b>${customerUnitDetails.get("SBUA Sq.ft")} Sq. Feet  </b></span> or 
+	   <span class="spansubtitle"><b>${customerUnitDetails.get("SBUA Sq.Mtrs")} Sq. Mtrs,</b></span> 
+	    in the Residential Development  known as <span class="spansubtitle"><b>Folium by Sumadhura</b></span></span></p>
+		
+		<p style="margin-top:5px"><span class="spansubtitle"><b>Dear Sir/ Madam,</b></span></p>
+		
+		<p style="margin-top:5px"><span class="spansubtitle"><b>Congratulations on the Handing over of your Apartment unit/Flat!</b></span></p>
+		
+		<p style="margin-top:5px"><span class="spansubtitle">
+			#if($info.condition == "Land Owner")We, #else We, #end
+the $info.builderOrLandOwner i.e, <span style='font-size:11px;'>$info.companySalutation $info.companyName.,</span> 
+		
+		    #if($info.condition == "Land Owner")
+			
+			#elseif($info.condition == "Aspire Series")
+				a proprietorship firm/ partnership firm/ company incorporated under the provisions of the Companies Act 1956,
+			#else
+				A company incorporated under the provisions of Indian Companies Act 1956,
+			#end
+			
+			#if($info.condition == "Land Owner")
+				residing at: $info.companyBillingAddress
+			#else
+        		having its registered office at: $info.companyBillingAddress
+        	#end
+		 
+		 , have completed the Residential Development in all respects  
+		as well as Apartment unit/ Flat bearing No. 
+		<span class="spansubtitle"><b>${customerDetails.get("flatName")},</b></span> in 
+		<span class="spansubtitle"><b>${customerDetails.get("floorName")},</b></span> of the 
+		<span class="spansubtitle"><b>${customerDetails.get("blockName")},Phase 1</b></span> having super built up area of 
+		<span class="spansubtitle"><b>${customerUnitDetails.get("SBUA Sq.ft")} Sq. Feet </b></span> or 
+		<span class="spansubtitle"><b>${customerUnitDetails.get("SBUA Sq.Mtrs")} Sq. Mtrs, ${customerDetails.get("blockName")},</b></span> 
+		as per the terms and conditions, specifications as agreed in the Agreement with respect of  Residential Development known as 
+		 <span class="spansubtitle"><b>Folium by Sumadhura</b></span>  constructed over the property bearing Sy.No.47/1,48/4,47/2A,47/2B,48/3,48/1C 
+		 situated at Whitefield Village, K.R.Puram Hobli, Bangalore East Taluk, Bangalore, and together totally admeasuring about  <b>15 Acres 20.03 Guntas,</b> presently under the jurisdiction of <b>BBMP</b>, Bangalore.</span>
+		</p>
+
+		<p style="margin-top:7px"><span class="spansubtitle">
+		This is in reference to the Agreement dated <span class="spansubtitle"><b>${customerUnitDetails.get("agreementDate")}</b></span> 
+		 in respect of Apartment unit/ Flat as 
+		mentioned above.</span>
+		</p>
+     
+	 <p style="margin-top:5px"><span class="spansubtitle">
+		 #if($info.condition == "Land Owner")
+	 We 
+	 #else 
+	 We 
+	 #end
+	 
+	  here by Handing over the possession of the said Apartment unit/ Flat for Occupation. 
+	 #if($info.condition == "Land Owner")
+	 We 
+	 #else 
+	 We 
+	 #end
+	 
+	  once again confirm that we have completed the 
+	 construction in all aspects with the agreed specifications. We also confirm that there are no pending works in your  Apartment unit/ Flat 
+	 and we are handing over it to your full satisfaction.</span>
+	 </p>
+	 
+	 <p><span class="spansubtitle">
+	 Please be informed that any works here after has to be taken care by yourself and $info.builderOrLandOwner i.e, <span style="font-size:13px"> $info.companySalutation $info.companyName  </span>
+	 will not be responsible for the same.</span> 
+	 </p>
+	 <br/>
+	<p >Thanking You!<br/><br/>
+	
+	
+	 #if($info.condition == "Land Owner")
+	  Mr.<span style="font-size:13px;">$info.companyName</span><br/></p>
+	   <p><br/> <img src="http://144.24.96.219:8888/images/digitalsignature1.png" width="100" height="40"/></p>
+      #else 
+      For <span style="font-size:13px;">$info.companyName</span><br/></p>
+       <p><br/> <img src="http://144.24.96.219:8888/images/digitalsignature1.png" width="100" height="40"/></p>
+       #end
+    <p >Place: Bangalore<br/>Date : ${customerDetails.get("todayDate")}</p>
+    </section> 
+    
+ 
+
+</article>

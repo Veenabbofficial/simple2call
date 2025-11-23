@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+	 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  	<title>Notification Approval Mail</title> 
+	   	<style>
+		table.Data {
+  font-family: arial, sans-serif;
+   border: 2px solid black;
+  border-collapse: collapse;
+  width:48%!important;
+
+}
+
+td.Data, th.Data {
+  border: 2px solid black;
+   border-collapse: collapse;
+  text-align: left;
+  padding: 5px;
+}
+	  	</style> 
+	</head>
+	<body>
+	
+		#set($tdsExcelDetailsList = $email.tdsDetailsList.get(0))
+ 
+		<span style="font-size: 15px;"> Dear<strong style="font-size:15px;"> ${tdsExcelDetailsList.custname} </strong>,<br>
+		<br><br>
+		Below are the TDS details for your reference.</span>
+<br><br>		
+	<div style="width:100%;display: inline-flex;">
+		
+		  <table class="Data"  style="border-collapse: collapse !important">
+                      
+                        <tr>
+                          <th class="Data">Title</th>
+                          <th class="Data">Name</th>
+                        </tr>
+                      
+                        <tr>
+                          <td class="Data">FlatNo</td>
+                          <td class="Data">${tdsExcelDetailsList.flatNo}</td>
+                        </tr>
+                        <tr>
+                          <td class="Data">PAN of Buyer</td>
+                          <td class="Data">${tdsExcelDetailsList.buyerPanNo}</td>
+                        </tr>
+                        <tr>
+                          <td class="Data">More than 1 buyer </td>
+                          <td class="Data">${tdsExcelDetailsList.moreThenOneYearBuyer}</td>
+                        </tr>
+          
+                       
+                     <tr>
+                          <td class="Data">PAN of Seller </td>
+                          <td class="Data">${tdsExcelDetailsList.sellerPanNo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Flat/Door Building </td>
+                          <td class="Data">${tdsExcelDetailsList.flatOrDoorBuilding}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Road/Street/Block/Sector </td>
+                          <td class="Data">${tdsExcelDetailsList.roadOrStreetOrBlockOrSector}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Postal Pin </td>
+                          <td class="Data">${tdsExcelDetailsList.pincode}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Post Office </td>
+                          <td class="Data">${tdsExcelDetailsList.postOffice}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Area /Locality </td>
+                          <td class="Data">${tdsExcelDetailsList.areaOrLocality}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">More than 1 Seller (Y/N) </td>
+                          <td class="Data">${tdsExcelDetailsList.moreThenOneYearSeller}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Type of Property </td>
+                          <td class="Data">${tdsExcelDetailsList.typeOfProperty}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Flat No </td>
+                          <td class="Data">${tdsExcelDetailsList.flatNoTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Road/Street </td>
+                          <td class="Data">${tdsExcelDetailsList.roadOrStreetTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Pin Code </td>
+                          <td class="Data">${tdsExcelDetailsList.pincodetwo}</td>
+                        </tr>
+          
+          
+                        <tr>
+                          <td class="Data">Post Office </td>
+                          <td class="Data">${tdsExcelDetailsList.postOfficeTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Area /Localty </td>
+                          <td class="Data">${tdsExcelDetailsList.areaOrLocalityTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Date of Agreement</td>
+                          <td class="Data">${tdsExcelDetailsList.aggrementDate}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Total Value of Consideration</td>
+                          <td class="Data">${tdsExcelDetailsList.considerationTotal}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Date of Payment/Credit & Date of Tax Deduction</td>
+                          <td class="Data">${tdsExcelDetailsList.dateOfpaymentOrCreditOrTaxdeduction}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Payment type</td>
+                          <td class="Data">${tdsExcelDetailsList.paymentType}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Whether it is last installment</td>
+                          <td class="Data">${tdsExcelDetailsList.isItLastInstalment}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Total Amount paid/credited in previous instalments</td>
+                          <td class="Data">${tdsExcelDetailsList.previousInstallmentsPaidOrCreditTotalAmount}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Amount Paid/Credited currently</td>
+                          <td class="Data">${tdsExcelDetailsList.currentPaidOrCreditAmount}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">TDS</td>
+                          <td class="Data">${tdsExcelDetailsList.tds}</td>
+                        </tr>
+
+                         <tr>
+                          <td class="Data">Mail ID</td>
+                          <td class="Data">${tdsExcelDetailsList.mailId}</td>
+                        </tr>
+
+
+                       
+                    </table>
+
+ <br><br>
+#if($tdsExcelDetailsList.sublist == "YES")
+		#set($tdsExcelDetailsList1 = $email.tdsDetailsList.get(1))
+		
+           <table class="Data" style="margin-left:25px;">
+                      
+                        <tr>
+                          <th class="Data">Title</th>
+                          <th class="Data">Name</th>
+                        </tr>
+                      
+                        <tr>
+                          <td class="Data">FlatNo</td>
+                          <td class="Data">${tdsExcelDetailsList1.flatNo}</td>
+                        </tr>
+                        <tr>
+                          <td class="Data">PAN of Buyer</td>
+                          <td class="Data">${tdsExcelDetailsList1.buyerPanNo}</td>
+                        </tr>
+                        <tr>
+                          <td class="Data">More than 1 buyer </td>
+                          <td class="Data">${tdsExcelDetailsList1.moreThenOneYearBuyer}</td>
+                        </tr>
+          
+                       
+                     <tr>
+                          <td class="Data">PAN of Seller </td>
+                          <td class="Data">${tdsExcelDetailsList1.sellerPanNo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Flat/Door Building </td>
+                          <td class="Data">${tdsExcelDetailsList1.flatOrDoorBuilding}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Road/Street/Block/Sector </td>
+                          <td class="Data">${tdsExcelDetailsList1.roadOrStreetOrBlockOrSector}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Postal Pin </td>
+                          <td class="Data">${tdsExcelDetailsList1.pincode}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Post Office </td>
+                          <td class="Data">${tdsExcelDetailsList1.postOffice}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Area /Locality </td>
+                          <td class="Data">${tdsExcelDetailsList1.areaOrLocality}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">More than 1 Seller (Y/N) </td>
+                          <td class="Data">${tdsExcelDetailsList1.moreThenOneYearSeller}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Type of Property </td>
+                          <td class="Data">${tdsExcelDetailsList1.typeOfProperty}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Flat No </td>
+                          <td class="Data">${tdsExcelDetailsList1.flatNoTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Road/Street </td>
+                          <td class="Data">${tdsExcelDetailsList1.roadOrStreetTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Pin Code </td>
+                          <td class="Data">${tdsExcelDetailsList1.pincodetwo}</td>
+                        </tr>
+          
+          
+                        <tr>
+                          <td class="Data">Post Office </td>
+                          <td class="Data">${tdsExcelDetailsList1.postOfficeTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Area /Localty </td>
+                          <td class="Data">${tdsExcelDetailsList1.areaOrLocalityTwo}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Date of Agreement</td>
+                          <td class="Data">${tdsExcelDetailsList1.aggrementDate}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Total Value of Consideration</td>
+                          <td class="Data">${tdsExcelDetailsList1.considerationTotal}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Date of Payment/Credit & Date of Tax Deduction</td>
+                          <td class="Data">${tdsExcelDetailsList1.dateOfpaymentOrCreditOrTaxdeduction}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Payment type</td>
+                          <td class="Data">${tdsExcelDetailsList1.paymentType}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Whether it is last installment</td>
+                          <td class="Data">${tdsExcelDetailsList1.isItLastInstalment}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Total Amount paid/credited in previous instalments</td>
+                          <td class="Data">${tdsExcelDetailsList1.previousInstallmentsPaidOrCreditTotalAmount}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">Amount Paid/Credited currently</td>
+                          <td class="Data">${tdsExcelDetailsList1.currentPaidOrCreditAmount}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="Data">TDS</td>
+                          <td class="Data">${tdsExcelDetailsList1.tds}</td>
+                        </tr>
+
+                         <tr>
+                          <td class="Data">Mail ID</td>
+                          <td class="Data">${tdsExcelDetailsList1.mailId}</td>
+                        </tr>
+
+
+                       
+                    </table>
+					
+		#else
+		#end	
+		 
+		</div>
+		<br><br>
+		<span style="font-size:15px;">Thanks <strong>TeamSumadhura</strong>.</span>
+  <br><br><br>
+	    <span style="font-size:15px;"><strong>Note :</strong> This is an auto generated E-mail, please do not reply to this mail.</span> 
+	
+	</body> 
+ </html>

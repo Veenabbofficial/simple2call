@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<root>
+<head>
+    <style>
+        body {
+            background: #f1f1f1;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice {
+            font-family: inherit;
+            font-weight: 100;
+            width: 95%;
+            max-width: 1000px;
+            margin: 2% auto;
+            box-sizing: border-box;
+            padding: 70px;
+            border-radius: 5px;
+            background: #fff;
+            min-height: auto;
+            font-size: 13;
+        }
+
+        .header {
+            display: flex;
+            width: 100%;
+
+            align-items: center;
+        }
+
+        .header--invoice {
+            order: 2;
+            text-align: right;
+            width: 40%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice--date,
+        .invoice--number {
+            font-size: 13px;
+            color: #494949;
+        }
+
+        .invoice--recipient {
+            margin-top: 25px;
+            margin-bottom: 4px;
+        }
+
+        .header--logo {
+            order: 1;
+            font-size: 30px;
+            width: 60%;
+            font-weight: 900;
+        }
+
+        .logo--address {
+            font-size: 13px;
+            padding: 4px;
+
+            width: 50%;
+        }
+
+        .logo--address1 {
+            font-size: 13px;
+            font-family: lato;
+            text-transform: capitalize;
+        }
+
+        .description {
+            margin: auto;
+            text-align: justify;
+        }
+
+        .sessiontitle {
+            text-align: center;
+            font-family: initial;
+            padding: 1px;
+            width: 100%;
+            margin-top: 10px;
+            text-transform: capitalize;
+            font-size: 13px;
+        }
+
+        .spansubtitle {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .bottomcls {
+            position: relative;
+            top: -18px;
+            font-size: 11px;
+            font-family: serif;
+            color: #795548;
+        }
+    </style>
+</head>
+<body>
+#set ($customerDetails = $email.dataForPdf.get("customerDetails").get(0)) #set ($customerUnitDetails = $email.dataForPdf.get("customerUnitDetails").get(0)) #set ($info = ${email.demandNoteGeneratorInfo})
+<article class="invoice" style="font-family: Times New Roman, Times, sans-serif;">
+    <p contenteditable="true" style="text-align: justify;"><b> Date:${customerDetails.get("todayDate")} </b></p>
+
+     <p contenteditable="true" style="text-align: left;">
+        To, <br />
+        <b> M/S. BAJAJ HOUSING FINANCE LTD.</b><br />
+        4th Floor, Bajaj Finserv Corporate Office,<br />
+        Off Pune-Ahmednagar Road, Viman Nagar, Pune-411 014.
+    </p>
+
+
+    <p contenteditable="true" style="text-align: justify;">
+       <b> Subject:</b> Issue of NOC-cum-Release letter of <b> Flat NO. ${customerDetails.get("flatName")} </b> in <b>'${customerDetails.get("blockName")}'</b> of Building known as <b>'${customerDetails.get("siteName")}' </b> situated at Sy No:47/1,
+        47/2A, 47/2B, 47/3, 48/3 &amp; 48/4 Whitefield Village, K.R.Puram Hobli, Bangalore East Taluk, Bangalore-560 066.
+    </p>
+    <p contenteditable="true" style="text-align: justify;">
+        <b> Ref. No.: 1. Bajaj Housing Finance Sanction Letter dated 22-Sept-2022 </b>
+    </p>
+    <p contenteditable="true" style="text-align: justify;">
+        Respected Sir / Madam,
+    </p>
+    <p contenteditable="true" style="text-align: justify;">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; We have sold the following Flat and you are requested to give the <u>NOC-cum-Release letter</u> for the said unit at the earliest.
+    </p>
+    <p contenteditable="true" style="text-align: justify;">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The Purchaser/s has taken loan from ${customerUnitDetails.get("customerLoanBank")} and their disbursement is pending. Hence you are requested to issue the <u>NOC-cum-release letter</u> at the earliest
+    </p>
+
+    <table style="width: 100%; border: 1px solid black; border-collapse: collapse; font-size: 13px; margin-top: 20px;">
+         <tr style="border: 1px solid black;">
+          <th colspan="2" style="border: 1px solid black; text-align: left; padding: 8px;background-color:#87CEEB;text-align: center;"> Details of Purchaser</th>
+            
+        </tr>
+        
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Purchaser's Full Name
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+               <b>  ${customerDetails.get("customerNames")} </b>
+            </td>
+        </tr>
+
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Purchaser's Mobile No.
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                ${customerDetails.get("custBookInfoPhoneNo")}
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Flat no
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                <b> ${customerDetails.get("flatName")} </b>
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Wing
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                ${customerDetails.get("blockName")}
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Floor
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                <b> ${customerDetails.get("floorName")} </b>
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Area (in Sqft)
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                ${customerUnitDetails.get("SBUA Sq.ft")}
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px; width: 50%;">
+                Project Name
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px; width: 50%;">
+               ${customerDetails.get("siteName")}
+            </td>
+        </tr>
+
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Project Location/ Address
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Whitefield Village, K.R.Puram Hobli, Bangalore
+            </td>
+        </tr>
+
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Consideration/ Agreement value (in Rs.)
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                ${customerDetails.get("totalSaleConsideration")}/-
+            </td>
+        </tr>
+
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Loan Amount (in Rs.)
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;"></td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                <b> Lender’s Name </b>
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                <b>${customerUnitDetails.get("customerLoanBank")}</b>
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Own contribution given to us (in Rs.)
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                ${customerDetails.get("strtotalMilestonePaidAmount")}/-
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+               Booking date
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                ${customerDetails.get("bookingDateSlashFormat")}
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+                Agreement for sale date
+            </td>
+            <td style="border: 1px solid black; text-align: left; padding: 8px;">
+             ${customerUnitDetails.get("agreementDate")}
+            </td>
+        </tr>
+    </table>
+    <br />
+    <p contenteditable="true" style="margin-top: 12px;">Kindly do the needful at the earliest.</p>
+
+    <p contenteditable="true" style="text-align: justify;">
+        Thanking you in anticipation.<br />
+        Yours faithfully,<br />
+       <b> FOR SUMADHURA INFRACON PVT LTD</b>
+    </p>
+</article>
+</body>
+</root>
